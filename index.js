@@ -3,7 +3,7 @@ import cors from 'cors';
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
 dotenv.config();
-console.log(process.env.API_KEY);
+
 const app = express();
 const port = 3005;
 
@@ -15,6 +15,7 @@ const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
 
 app.post('/api/chat', async (req, res) => {
   try {
+    console.log('Processing data...');
     const { prompt } = req.body;
 
     const requestBody = {
@@ -33,11 +34,10 @@ app.post('/api/chat', async (req, res) => {
       },
       body: JSON.stringify(requestBody)
     });
-    console.log('Processing Data...');
     const { choices } = await response.json();
     
     const assistantReply = choices[0]?.message?.content || '';
-    console.log('JSON Generated');
+    console.log('Resume JSON Generated Successfully');
     res.json({ assistantReply });
   } catch (error) {
     console.error('Error:', error);
