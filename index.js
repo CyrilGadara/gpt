@@ -1,14 +1,16 @@
 import express from 'express';
 import cors from 'cors';
 import fetch from 'node-fetch';
-
+import dotenv from 'dotenv';
+dotenv.config();
+console.log(process.env.API_KEY);
 const app = express();
 const port = 3005;
 
 app.use(cors());
 app.use(express.json());
 
-const apiKey = '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';
+const apiKey = process.env.API_KEY;
 const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
 
 app.post('/api/chat', async (req, res) => {
