@@ -39,8 +39,7 @@ app.post('/api/chat', async (req, res) => {
     const assistantReply = choices[0]?.message?.content || '';
     console.log('Resume JSON Generated Successfully');
     
-    const jsonResponse = JSON.parse(assistantReply);
-    res.json(jsonResponse);
+    res.json({ assistantReply });
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: 'An error occurred' });
