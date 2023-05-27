@@ -8,7 +8,7 @@ const port = 3005;
 app.use(cors());
 app.use(express.json());
 
-const apiKey = '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';
+const apiKey = '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';
 const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
 
 app.post('/api/chat', async (req, res) => {
