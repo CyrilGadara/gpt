@@ -33,11 +33,11 @@ app.post('/api/chat', async (req, res) => {
       },
       body: JSON.stringify(requestBody)
     });
-
+    console.log('Processing Data...');
     const { choices } = await response.json();
-    console.log(choices)
+    
     const assistantReply = choices[0]?.message?.content || '';
-
+    console.log('JSON Generated');
     res.json({ assistantReply });
   } catch (error) {
     console.error('Error:', error);
@@ -45,17 +45,6 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
-
-// Function to trigger the API call
-const triggerApiCall = () => {
-  // Place your API call logic here
-  console.log('Triggering API call...');
-};
-
-// Function to start the interval timer
-const startTimer = () => {
-  timer = setInterval(triggerApiCall, 6000); // 10 minutes in milliseconds
-};
 
 app.listen(port, () => {
   console.log(`API server is running on port ${port}`);
