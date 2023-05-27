@@ -37,7 +37,7 @@ app.post('/api/chat', async (req, res) => {
     });
 
     const { choices } = await response.json();
-    const assistantReply = choices[0]?.message?.content || '';
+    const assistantReply = responseData.choices?.[0]?.message?.content || '';
 
     res.json({ assistantReply });
   } catch (error) {
