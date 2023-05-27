@@ -8,12 +8,8 @@ const port = 3005;
 app.use(cors());
 app.use(express.json());
 
-const apiKey = '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';
+const apiKey = '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';
 const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
-
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
 
 app.post('/api/chat', async (req, res) => {
   try {
@@ -36,8 +32,9 @@ app.post('/api/chat', async (req, res) => {
       body: JSON.stringify(requestBody)
     });
 
-    const responseBody = await response.json();
-    const assistantReply = responseBody.choices?.[0]?.message?.content || '';
+    const { choices } = await response.json();
+    console.log(choices)
+    const assistantReply = choices[0]?.message?.content || '';
 
     res.json({ assistantReply });
   } catch (error) {
