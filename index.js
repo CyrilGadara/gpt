@@ -11,6 +11,10 @@ app.use(express.json());
 const apiKey = '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';
 const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
 
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
+
 app.post('/api/chat', async (req, res) => {
   try {
     const { prompt } = req.body;
