@@ -17,7 +17,7 @@ app.post('/api/chat', async (req, res) => {
   try {
     console.log('Processing data...');
     const { prompt } = req.body;
-
+    console.log(prompt);
     const requestBody = {
       model: 'gpt-3.5-turbo',
       messages: [
@@ -37,6 +37,8 @@ app.post('/api/chat', async (req, res) => {
     const { choices } = await response.json();
     
     const assistantReply = choices[0]?.message?.content || '';
+    
+    console.log(assistantReply)
     console.log('Resume JSON Generated Successfully');
     
     res.json({ assistantReply });
