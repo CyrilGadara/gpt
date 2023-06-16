@@ -14,6 +14,7 @@ const apiKey = process.env.API_KEY;
 const apiEndpoint = 'https://api.openai.com/v1/chat/completions';
 
 app.post('/api/chat', async (req, res) => {
+  req.setTimeout(0); // Set timeout to 0 (infinite) for this specific request
   try {
     console.log('Processing data...');
     const { prompt } = req.body;
